@@ -17,7 +17,15 @@ public class LoginGenerator {
     public LoginGenerator(LoginService loginService) {
         this.loginService = loginService;
     }
-
+    private int nbdeLogin (final String log ){
+        int n = 0;
+        for (int i =0 ; i<loginService.loginsExistants.size();i++){
+            if (loginService.loginsExistants.get(i).equals(log)){
+                n++;
+            }
+        }
+        return n;
+    }
     /**
      * Genere un login unique a partir d'un nom et d'un prenom en prenant la premiere lettre du prenom, concatenee avec
      * les 3 premieres lettres du nom, le tout mis en lettres capitales et desaccentue. Le login genere doit etre unique
@@ -33,13 +41,24 @@ public class LoginGenerator {
      * @param prenom le prenom
      * @return le login genere
      */
+
     public String generateLoginForNomAndPrenom(String nom, String prenom) {
         String p = deAccent(prenom.substring(0,1).toUpperCase());
         String n = deAccent(nom.substring(0,3).toUpperCase());
         String login = p+n ;
-        if (loginService.loginExists(login)) {
-            login = login + "1" ;
+        int nbLog = 0;
+
+        while (nbdeLogin(login) !=0){
+            if (nbLog > 0){
+                login = p+ n + nbLog ;
+            }
+
+            nbLog ++;
         }
+
+
+
+
         loginService.addLogin(login);
         return login;
     }

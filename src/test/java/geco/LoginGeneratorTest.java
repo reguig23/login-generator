@@ -24,7 +24,10 @@ public class LoginGeneratorTest {
         LoginService loginService = new LoginService(new String[] {"JROL",
                 "BPER", "CGUR", "JDU", "JRAL", "JRAL1"});
         LoginGenerator loginGenerator = new LoginGenerator(loginService);
-       String login =  loginGenerator.generateLoginForNomAndPrenom("Durand","Paul");
-        assertTrue(login.equals("PDUR"));
+       String CT1 =  loginGenerator.generateLoginForNomAndPrenom("Durand","Paul");
+        assertTrue(CT1.equals("PDUR"));
+        String CT2 = loginGenerator.generateLoginForNomAndPrenom("Ralling","John");
+        System.out.println(CT2);
+        assertTrue(CT2.equals("JRAL2"));
     }
 }
