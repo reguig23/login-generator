@@ -27,7 +27,10 @@ public class LoginGeneratorTest {
        String CT1 =  loginGenerator.generateLoginForNomAndPrenom("Durand","Paul");
         assertTrue(CT1.equals("PDUR"));
         String CT2 = loginGenerator.generateLoginForNomAndPrenom("Ralling","John");
-        System.out.println(CT2);
         assertTrue(CT2.equals("JRAL2"));
+        String CT3 = loginGenerator.generateLoginForNomAndPrenom("Rolling","Jean");
+        assertTrue(CT3.equals("JROL1"));
+        String CT4 = loginGenerator.generateLoginForNomAndPrenom("Dùrand","Paul");
+        assertTrue(CT4.equals("PDU"));
     }
 }
