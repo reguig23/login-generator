@@ -33,4 +33,13 @@ public class LoginGeneratorTest {
         String CT4 = loginGenerator.generateLoginForNomAndPrenom("Dùrand","Paul");
         assertTrue(CT4.equals("PDU"));
     }
+
+    @Test
+    public void generateLoginForNomAndPrenomInf3(){
+        LoginService loginService = new LoginService(new String[] {"JROL",
+                "BPER", "CGUR", "JDU", "JRAL", "JRAL1"});
+        LoginGenerator loginGenerator = new LoginGenerator(loginService);
+        String CT1 =  loginGenerator.generateLoginForNomAndPrenom("Du","Paul");
+        assertTrue(CT1.equals("PDU"));
+    }
 }
